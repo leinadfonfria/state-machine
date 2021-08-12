@@ -11,10 +11,11 @@ import com.imatia.statemachine.rest.service.OrderTrackingService;
 public class OrderTrackingServiceImpl implements OrderTrackingService {
 	
 	@Autowired
-	OrderTrackingRepository orderTrackingRepository;
+	private OrderTrackingRepository orderTrackingRepository;
 	
 	@Override
 	public OrderTracking save(OrderTracking orderTracking) {
+		
 		return orderTrackingRepository.save(orderTracking);
 	}
 	

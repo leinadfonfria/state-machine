@@ -4,4 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.imatia.statemachine.rest.model.entity.OrderTracking;
 
-public interface OrderTrackingRepository extends CrudRepository<OrderTracking, Long> {}
+public interface OrderTrackingRepository extends CrudRepository<OrderTracking, Long> {
+	
+}
