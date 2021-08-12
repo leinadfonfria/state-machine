@@ -32,13 +32,22 @@ public class OrderTrackingServiceImpl implements OrderTrackingService {
 	@Override
 	public boolean validateOrderTrackingStatus(OrderTracking orderTracking) {
 		
-		boolean isValid = true;
+		OrderTracking orderTrackingRepo = orderTrackingRepository.findById(orderTracking.getOrderId()).orElse(null);
 		
-		if(!validateOrderTrackingStatusId(orderTracking.getTrackingStatusId())) {
-			isValid = false;
-		}
+		if(orderTrackingRepo==null)
+			return true;
 		
-		return isValid;
+		if(orderTrackingRepo.getTrackingStatus().equals(OrderTracking.TrackingStatus.ENTREGADO))
+			return false;
+		
+		if(!validateOrderTrackingStatusId(orderTracking.getTrackingStatusId()))
+			return false;
+		
+		if(!orderTrackingRepo.getTrackingStatus().equals(OrderTracking.TrackingStatus.RECOGIDO_EN_ALMACEN) &&
+				orderTracking.getTrackingStatus().equals(OrderTracking.TrackingStatus.RECOGIDO_EN_ALMACEN))
+			return false;
+
+		return true;
 	}
 	
 	private boolean validateOrderTrackingStatusId(int id) {
