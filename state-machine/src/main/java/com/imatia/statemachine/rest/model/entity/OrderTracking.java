@@ -3,7 +3,12 @@ package com.imatia.statemachine.rest.model.entity;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class OrderTracking {
 	
 	public enum TrackingStatus {
@@ -29,6 +34,8 @@ public class OrderTracking {
 		
 	};
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long orderId;
 	private TrackingStatus trackingStatus;
 	private Date changeStatusDate;
