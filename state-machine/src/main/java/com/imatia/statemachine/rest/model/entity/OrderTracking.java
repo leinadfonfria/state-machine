@@ -40,6 +40,9 @@ public class OrderTracking {
 	private TrackingStatus trackingStatus;
 	private Date changeStatusDate;
 	
+	public OrderTracking() {
+	}
+	
 	public OrderTracking(Long orderId, TrackingStatus trackingStatus, Date changeStatusDate) {
 		super();
 		this.orderId = orderId;
